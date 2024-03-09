@@ -34,10 +34,10 @@ class Card:
     def __init__(self,rank,suit):
         self.num = rank
         self.suit = suit
-        self.listOfCards = []
+        self.ListOfCards = []
         
     def __str__(self):
-        return str(self.listOfCards) 
+        return str(self.ListOfCards) 
 
     def create_deck(self):
 
@@ -52,9 +52,9 @@ class Card:
                 else:
                     value = special_values[num]
             
-                self.listOfCards.append([key, value])
+                self.ListOfCards.append([key, value])
 
-        return self.listOfCards
+        return self.ListOfCards
 
 def main():
     
@@ -84,7 +84,7 @@ def main():
             temp_player = dealer
             temp_name = name2
         
-        card, value = deal(deck.listOfCards)
+        card, value = deal(deck.ListOfCards)
         temp_player.update_hand_value(card, value)
         print(temp_name, "was dealt", card)
 
@@ -95,10 +95,10 @@ def main():
 
     print()
     print("Drawing cards time for player 1 "+name1)
-    hitOrStay(player, name1, deck)
+    HitOrStay(player, name1, deck)
     time.sleep(1)
     print("Drawing cards time for player 2 or Dealer "+name2)
-    dealerHitOrStay(dealer, name2, deck)
+    DealerHitOrStay(dealer, name2, deck)
 
     time.sleep(3)
     print()
@@ -135,7 +135,7 @@ def deal(deck):
     card, value = deck.pop(0) #take the first card after each shuffle from the card to one player and remove it
     return(card,value)
 
-def hitOrStay(player, name1, deck):
+def HitOrStay(player, name1, deck):
 
     turn = True
     while turn:
@@ -151,16 +151,16 @@ def hitOrStay(player, name1, deck):
         
         player.displayHand(name1)
 
-def dealerHitOrStay(dealer, name2, deck):
+def DealerHitOrStay(dealer, name2, deck):
 
     while dealer.handValue <= 16:
         print(name2+", as your hand value is now under or equal to 16, you have to draw cards until the value is over 16 and the stop.")
-        card, value = deal(deck.listOfCards)
+        card, value = deal(deck.ListOfCards)
         dealer.update_hand_value(card, value)
         print(name2,"was dealt", card)
 
     if dealer.handValue > 16:
-        print(name2+", your hand value is now more than 16 so your turn ends here with no more card drawn.")
+        print(name2+", your hand value is now more than 16 so your turn ends here with no more cards drawn.")
     
     dealer.displayHand(name2)
 
