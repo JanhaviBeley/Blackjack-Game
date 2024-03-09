@@ -1,5 +1,5 @@
 #Janhavi Beley 
-#Blackjack Game 
+#Blackjack Game - Final Project
 #Introduction to Computer Science Course CS112
 
 import random 
